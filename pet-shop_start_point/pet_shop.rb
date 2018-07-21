@@ -47,15 +47,21 @@ def find_pet_by_name(pet_shop, name)
 end
 
 def remove_pet_by_name(pet_shop, name)
-  #must be easier way to get index?
-  index = 0
+  #initial try to find appropriate index of pet_shop[:pets] array:
+  # idx = 0
+  #
+  # while idx < pet_shop[:pets].length()
+  #   break if pet_shop[:pets][idx][:name] == name
+  #   idx += 1
+  # end
+  #
 
-  while index < pet_shop[:pets].length()
-    break if pet_shop[:pets][index][:name] == name
-    index += 1
-  end
+  #found a shorter way using a block:
+  idx = pet_shop[:pets].index{|pet| pet[:name] == name}
 
-  pet_shop[:pets].delete_at(index)
+  #delete entry from pet_shop[:pets] array
+  pet_shop[:pets].delete_at(idx)
+
 end
 
 def add_pet_to_stock(pet_shop, new_pet)
